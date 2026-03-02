@@ -36,3 +36,20 @@ employee (FK)
 date
 status (Present / Absent)
 unique constraint: (employee, date)
+
+
+src/
+│
+├── api/
+│   └── axios.js
+│
+├── pages/
+│   ├── Login.jsx
+│   ├── Dashboard.jsx
+│   └── Employees.jsx
+│
+├── components/
+│   └── Navbar.jsx
+│
+├── App.jsx
+└── main.jsx
