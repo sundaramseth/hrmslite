@@ -13,6 +13,9 @@ Django
 Django REST Framework
 Database:
 PostgreSQL (Render default)
+
+
+
 SQLite for local
 
 Deployment:
@@ -36,3 +39,22 @@ employee (FK)
 date
 status (Present / Absent)
 unique constraint: (employee, date)
+
+
+w9Bj1PJj3DI7oDb4
+
+src/
+│
+├── api/
+│   └── axios.js
+│
+├── pages/
+│   ├── Login.jsx
+│   ├── Dashboard.jsx
+│   └── Employees.jsx
+│
+├── components/
+│   └── Navbar.jsx
+│
+├── App.jsx
+└── main.jsx

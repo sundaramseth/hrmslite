@@ -3,6 +3,8 @@ from rest_framework.response import Response
 from rest_framework import status
 from .models import Employee, Attendance
 from .serializers import EmployeeSerializer, AttendanceSerializer
+from django.utils import timezone
+
 
 class EmployeeListCreateView(APIView):
 
@@ -23,7 +25,100 @@ class EmployeeListCreateView(APIView):
             status=status.HTTP_400_BAD_REQUEST
         )
     
-class EmployeeDeleteView(APIView):
+
+class EmployeeDetailView(APIView):
+
+    def get_object(self, pk):
+        try:
+            return Employee.objects.get(pk=pk)
+        except Employee.DoesNotExist:
+            return None
+
+    # Get single employee
+    def get(self, request, pk):
+        employee = self.get_object(pk)
+        if not employee:
+            return Response(
+                {"error": "Employee not found."},
+                status=status.HTTP_404_NOT_FOUND
+            )
+
+        serializer = EmployeeSerializer(employee)
+        return Response(serializer.data)
+
+    # Full update
+    def put(self, request, pk):
+        employee = self.get_object(pk)
+        if not employee:
+            return Response(
+                {"error": "Employee not found."},
+                status=status.HTTP_404_NOT_FOUND
+            )
+
+        serializer = EmployeeSerializer(employee, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    # Partial update (THIS FIXES YOUR ISSUE)
+    def patch(self, request, pk):
+        employee = self.get_object(pk)
+        if not employee:
+            return Response(
+                {"error": "Employee not found."},
+                status=status.HTTP_404_NOT_FOUND
+            )
+
+        serializer = EmployeeSerializer(
+            employee,
+            data=request.data,
+            partial=True   # 🔥 IMPORTANT
+        )
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    # Delete
+    def delete(self, request, pk):
+        employee = self.get_object(pk)
+        if not employee:
+            return Response(
+                {"error": "Employee not found."},
+                status=status.HTTP_404_NOT_FOUND
+            )
+
+        employee.delete()
+        return Response(
+            {"message": "Employee deleted successfully."},
+            status=status.HTTP_200_OK
+        )
+    
+    # Partial update (THIS FIXES YOUR ISSUE)
+    def patch(self, request, pk):
+        employee = self.get_object(pk)
+        if not employee:
+            return Response(
+                {"error": "Employee not found."},
+                status=status.HTTP_404_NOT_FOUND
+            )
+
+        serializer = EmployeeSerializer(
+            employee,
+            data=request.data,
+            partial=True   
+        )
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
     def delete(self, request, pk):
         try:
@@ -67,10 +162,16 @@ class AttendanceListCreateView(APIView):
 class DashboardView(APIView):
 
     def get(self, request):
+        today = timezone.now().date()
+        print("Today's date:", today)  # Debugging line to check the value of 'today'
         total_employees = Employee.objects.count()
         total_attendance = Attendance.objects.count()
+        present_employees = Attendance.objects.filter(date=today,status="Present").count()
+        absent_employees = Attendance.objects.filter(date=today,status="Absent").count()
 
         return Response({
             "total_employees": total_employees,
-            "total_attendance_records": total_attendance
+            "total_attendance_records": total_attendance,
+            "present_employees": present_employees,
+            "absent_employees": absent_employees
         })
