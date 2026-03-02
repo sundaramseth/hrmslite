@@ -55,8 +55,7 @@ src/
 │   └── Navbar.jsx
 │
 ├── App.jsx
-<<<<<<< HEAD
 └── main.jsx
-=======
-└── main.jsx
->>>>>>> 8e0dc7841b8f836d9bbcbe599659e22151b987a7
+
+
+8cb8ee6755cb428eb6870c69129666d2
