@@ -41,8 +41,6 @@ status (Present / Absent)
 unique constraint: (employee, date)
 
 
-w9Bj1PJj3DI7oDb4
-
 src/
 │
 ├── api/
@@ -57,4 +55,8 @@ src/
 │   └── Navbar.jsx
 │
 ├── App.jsx
+<<<<<<< HEAD
 └── main.jsx
+=======
+└── main.jsx
+>>>>>>> 8e0dc7841b8f836d9bbcbe599659e22151b987a7
