@@ -9,7 +9,7 @@ function Dashboard() {
 
   useEffect(() => {
 
-    const fetchDashboardData = async () => axios.get("http://127.0.0.1:8000/api/dashboard/", {
+    const fetchDashboardData = async () => axios.get("https://hrmslite-ubcb.onrender.com/api/dashboard/", {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("access")}`,
       },

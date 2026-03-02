@@ -15,7 +15,7 @@ function Employee() {
 
   const fetchEmployees = () => {
     axios
-      .get("http://127.0.0.1:8000/api/employees/", {
+      .get("https://hrmslite-ubcb.onrender.com/api/employees/", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => setEmployees(res.data));
@@ -34,7 +34,7 @@ function Employee() {
     if (editing) {
       axios
         .patch(
-          `http://127.0.0.1:8000/api/employees/${formData.id}/`,
+          `https://hrmslite-ubcb.onrender.com/api/employees/${formData.id}/`,
             {
             first_name: formData.first_name,
             email: formData.email,
@@ -50,7 +50,7 @@ function Employee() {
     } else {
       axios
         .post(
-          "http://127.0.0.1:8000/api/employees/",
+          "https://hrmslite-ubcb.onrender.com/api/employees/",
           {
             employee_id: formData.employee_id,
             first_name: formData.first_name,
@@ -69,7 +69,7 @@ function Employee() {
 
   const handleDelete = (id) => {
     axios
-      .delete(`http://127.0.0.1:8000/api/employees/${id}/`, {
+      .delete(`https://hrmslite-ubcb.onrender.com/api/employees/${id}/`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then(() => fetchEmployees());

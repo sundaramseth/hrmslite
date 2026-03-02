@@ -14,7 +14,7 @@ function Attendance() {
 
  const fetchEmployees = () => {
     axios
-      .get("http://127.0.0.1:8000/api/employees/", {
+      .get("https://hrmslite-ubcb.onrender.com/api/employees/", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => setEmployees(res.data));
@@ -22,7 +22,7 @@ function Attendance() {
 
     const fetchAttendance = () => {
     axios
-      .get("http://127.0.0.1:8000/api/attendance/", {
+      .get("https://hrmslite-ubcb.onrender.com/api/attendance/", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => setRecords(res.data));
@@ -39,7 +39,7 @@ function Attendance() {
 
   const handleSubmit = () => {
     axios
-      .post("http://127.0.0.1:8000/api/attendance/", formData, {
+      .post("https://hrmslite-ubcb.onrender.com/api/attendance/", formData, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then(() => {
