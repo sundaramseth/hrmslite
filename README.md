@@ -1,62 +1,63 @@
-# hrmslite
-Lightweight Human Resource Management System (HRMS Lite).
+# HRMS Lite - Employee Attendance Management System
 
+## Project Overview
+HRMS Lite is a modern Human Resource Management System designed to manage employee attendance efficiently. The application allows administrators and HR personnel to:
 
-Stack Used - 
-Frontend:
-React (Vite)
-Axios
-Tailwind CSS
+- Register and manage employees
+- Record daily attendance
+- View dashboard statistics such as total employees and present employees
+- Handle authentication with JWT-based login and signup
+- Access a clean, responsive frontend interface
 
-Backend:
-Django
-Django REST Framework
-Database:
-PostgreSQL (Render default)
+The system is built as a **full-stack web application** with a Django REST Framework backend and a React frontend.
 
+---
 
+## Tech Stack Used
 
-SQLite for local
+**Backend:**
+- Django 4.x
+- Django REST Framework (DRF)
+- SQLite (local) / PostgreSQL (Supabase for production)
+- JWT Authentication
+- Python 3.10+
+- Tailwind CSS for admin/custom templates (optional)
 
-Deployment:
-Backend → Render
-Frontend → Vercel
+**Frontend:**
+- React 19.2
+- React Router for SPA routing
+- Axios for API calls
+- Tailwind CSS for responsive, modern UI
 
-SYSTEM DESIGN 
+**Deployment:**
+- Backend: [Render](https://hrmslite-ubcb.onrender.com)
+- Frontend: [Vercel](https://hrmslite-nine.vercel.app/)
 
-Entities-
-Employee
-id (auto PK)
-employee_id (unique)
-full_name
-email
-department
-created_at
+---
 
-Attendance
-id
-employee (FK)
-date
-status (Present / Absent)
-unique constraint: (employee, date)
+## Features
 
+1. **Authentication**
+   - Login with JWT
+   - Session handling using `localStorage`
+2. **Employee Management**
+   - Add, view, and manage employee records
+3. **Attendance Management**
+   - Mark attendance for employees
+   - Dashboard shows total employees and number of present employees for the current date
+4. **Dashboard**
+   - Shows overall attendance statistics
+5. **Responsive UI**
+   - Login and Signup pages designed with Tailwind CSS
+   - Mobile-friendly and production-ready design
 
-w9Bj1PJj3DI7oDb4
+---
 
-src/
-│
-├── api/
-│   └── axios.js
-│
-├── pages/
-│   ├── Login.jsx
-│   ├── Dashboard.jsx
-│   └── Employees.jsx
-│
-├── components/
-│   └── Navbar.jsx
-│
-├── App.jsx
-└── main.jsx
+## Steps to Run the Project Locally
 
-8e0dc7841b8f836d9bbcbe599659e22151b987a7
+> Make sure you have **Python 3.10+** and **Node.js** installed.
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/sundaramseth/hrmslite.git
+cd hrmslite
