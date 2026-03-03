@@ -34,7 +34,6 @@ class EmployeeDetailView(APIView):
         except Employee.DoesNotExist:
             return None
 
-    # Get single employee
     def get(self, request, pk):
         employee = self.get_object(pk)
         if not employee:
@@ -46,7 +45,6 @@ class EmployeeDetailView(APIView):
         serializer = EmployeeSerializer(employee)
         return Response(serializer.data)
 
-    # Full update
     def put(self, request, pk):
         employee = self.get_object(pk)
         if not employee:
@@ -62,7 +60,6 @@ class EmployeeDetailView(APIView):
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    # Partial update (THIS FIXES YOUR ISSUE)
     def patch(self, request, pk):
         employee = self.get_object(pk)
         if not employee:
@@ -74,7 +71,7 @@ class EmployeeDetailView(APIView):
         serializer = EmployeeSerializer(
             employee,
             data=request.data,
-            partial=True   # 🔥 IMPORTANT
+            partial=True   #
         )
 
         if serializer.is_valid():
@@ -98,7 +95,6 @@ class EmployeeDetailView(APIView):
             status=status.HTTP_200_OK
         )
     
-    # Partial update (THIS FIXES YOUR ISSUE)
     def patch(self, request, pk):
         employee = self.get_object(pk)
         if not employee:
@@ -163,7 +159,7 @@ class DashboardView(APIView):
 
     def get(self, request):
         today = timezone.now().date()
-        print("Today's date:", today)  # Debugging line to check the value of 'today'
+        print("Today's date:", today)  
         total_employees = Employee.objects.count()
         total_attendance = Attendance.objects.count()
         present_employees = Attendance.objects.filter(date=today,status="Present").count()
