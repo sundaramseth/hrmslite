@@ -33,6 +33,9 @@ The system is built as a **full-stack web application** with a Django REST Frame
 - Backend: [Render](https://hrmslite-ubcb.onrender.com)
 - Frontend: [Vercel](https://hrmslite-nine.vercel.app/)
 
+- Username: admin
+- Password: Test@1234
+
 ---
 
 ## Features
