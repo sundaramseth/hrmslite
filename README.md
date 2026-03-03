@@ -64,3 +64,28 @@ The system is built as a **full-stack web application** with a Django REST Frame
 ```bash
 git clone https://github.com/sundaramseth/hrmslite.git
 cd hrmslite
+```
+
+### 2 . Backend (Django + DRF)
+```
+cd hrms_backend
+python -m venv venv
+# Windows
+venv\Scripts\activate
+# Mac/Linux
+source venv/bin/activate
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py createsuperuser  # optional
+python manage.py runserver
+```
+Backend URL: http://127.0.0.1:8000/
+
+### 3. Frontend (React + Tailwind)
+```
+cd hrms_frontend
+npm install
+# VITE_API_URL=http://127.0.0.1:8000
+npm run dev
+```
+Frontend URL: http://localhost:5173/
