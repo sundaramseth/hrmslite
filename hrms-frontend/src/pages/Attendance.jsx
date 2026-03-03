@@ -101,7 +101,11 @@ function Attendance() {
           </button>
         </div>
 
-        {/* Table */}
+<div className="overflow-x-auto">
+
+    <h2 className="text-xl mb-4">Attendance Records</h2>
+
+    {/* Table */}
         <table className="w-full bg-white shadow rounded">
           <thead className="bg-gray-200">
             <tr>
@@ -128,6 +132,8 @@ function Attendance() {
             ))}
           </tbody>
         </table>
+</div>
+    
       </div>
     </>
   );

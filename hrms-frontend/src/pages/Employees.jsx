@@ -101,6 +101,7 @@ function Employee() {
           </button>
         </div>
 
+        <div className="overflow-x-auto">
         <table className="w-full bg-white shadow rounded">
           <thead className="bg-gray-200">
             <tr>
@@ -132,6 +133,9 @@ function Employee() {
             ))}
           </tbody>
         </table>
+
+        </div>
+
 
         {showModal && (
           <div className="fixed inset-0 bg-black bg-opacity-40 flex justify-center items-center">
